@@ -1,7 +1,9 @@
 ﻿using System;
+using Newtonsoft.Json;
 
 namespace BlackJackGameGUI.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class BlackJack
     {
         #region Fields
@@ -11,8 +13,11 @@ namespace BlackJackGameGUI.Models
         #endregion
 
         #region Properties
+        [JsonProperty]
         public Hand DealerHand { get; private set; }
+        [JsonProperty]
         public Hand PlayerHand { get; private set; }
+        [JsonProperty]
         public GameState GameState { get; private set; }
         #endregion
 
@@ -32,6 +37,9 @@ namespace BlackJackGameGUI.Models
             PlayerHand = new Hand();
             Deal();
         }
+
+        [JsonConstructor]
+        public BlackJack(bool ForJson) { }
         #endregion
 
         #region Methods

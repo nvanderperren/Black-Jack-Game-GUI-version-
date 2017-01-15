@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace BlackJackGameGUI.Models
 {
+    [JsonObject(MemberSerialization.OptIn)]
     public class Deck
     {
         #region Fields
         private static Random _random = new Random();
+        [JsonProperty]
         protected IList<BlackJackCard> _cards;
         #endregion
 
