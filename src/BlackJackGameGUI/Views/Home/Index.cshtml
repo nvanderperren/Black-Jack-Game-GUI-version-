@@ -8,8 +8,56 @@
     <link href="~/css/BJ.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 class="hand">@Model.DealerHand.Cards</h1>
-<h1 class="hand">@Model.PlayerHand.Cards</h1>
+<div id="playGround">
+    <h1>@Model.GameSummary()</h1>
+    <p class="hand">
+        @foreach (var card in Model.DealerHand.Cards)
+        {
+            if (card.FaceUp)
+            {
+                <img src="~/images/kaart@((((int) card.Suit-1)*13) + ((int)card.FaceValue-1)).gif" alt="DealerCard"/>
+            }
+            else
+            {
+                <img src="~/images/kaartback.gif" alt="DealerCard"/>
+            }
+
+
+        }
+        <span class="total">Dealer total: @Model.DealerHand.Value</span>
+    </p>
+    
+    <p class="hand">
+        @foreach (var card in Model.PlayerHand.Cards)
+        {
+            if (card.FaceUp)
+            {
+                <img src="~/images/kaart@((((int) card.Suit - 1) * 13) + ((int) card.FaceValue - 1)).gif" alt="PlayerCard"/>
+            }
+            else
+            {
+                <img src="~/images/kaartback.gif" alt="PlayerCard"/>
+            }
+        }
+        <span class="total">Player total: @Model.PlayerHand.Value</span>
+    </p>
+    
+    <p>
+        @if ((int)Model.GameState != 1)
+        {
+            <a asp-controller="Home" asp-action="NextCard">Card</a>
+            <a asp-controller="Home" asp-action="Pass">Pass</a>
+        }
+        else
+        {
+            <a asp-controller="Home" asp-action="Index">New Game</a>
+        }
+    </p>
+    
+   
+
+</div>
+
 
 </body>
 </html>
