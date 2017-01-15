@@ -1,0 +1,15 @@
+﻿@model BlackJackGameGUI.Models.BlackJack
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Black Jack</title>
+    <link href="~/css/BJ.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 class="hand">@Model.DealerHand.Cards</h1>
+<h1 class="hand">@Model.PlayerHand.Cards</h1>
+
+</body>
+</html>
